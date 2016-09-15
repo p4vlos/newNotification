@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         
         //Add an attachment
         let myImage = "IMG"
-        guard let imageUrl = Bundle.main.url(forResource: myImage, withExtension: "jpeg") else {
+        guard let imageUrl = Bundle.main.url(forResource: myImage, withExtension: "gif") else {
             completion(false)
             return
         }
@@ -52,6 +52,9 @@ class ViewController: UIViewController {
         attachment = try! UNNotificationAttachment(identifier: "myNotification", url: imageUrl, options: .none)
         
         let notif = UNMutableNotificationContent()
+        
+        //ONLY FOR EXTENSION
+        notif.categoryIdentifier = "myNotificationCategory"
         
         notif.title = "New Notification"
         notif.subtitle = "Those are great!"
